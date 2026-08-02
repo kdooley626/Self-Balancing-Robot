@@ -3,7 +3,7 @@
 A two-wheeled inverted pendulum robot that balances using a complementary-filtered
 IMU estimate and a model-based LQR controller.
 
-![Self_Balancing Robot](assets/Full_assembly_build.jpeg)
+![Self_Balancing Robot](Assets/Full_assembly_build.jpeg)
 
 <!-- A short GIF of it balancing is the single highest-value thing on this page.
      Record a few seconds on your phone, convert to GIF, drop it in assets/. -->
@@ -12,7 +12,7 @@ IMU estimate and a model-based LQR controller.
 
 ## Status
 
-Robot balances using an LQR derived control loop
+Robot balances using an LQR derived control loop.
 Robots x position (horizontal movement) is not controlled, therefore robot "runs away"
 and needs to be bumped back and forth to stay in a constrained region.
 
@@ -84,9 +84,9 @@ in order to keep the robot within a certain distance from a wall or other refere
 
 ### Gains
 
-Solved the ARE with `Q = diag(1, 0.1)`, `R = 1`:
-Q matrix prioritized theta since the primary objective of the robot is to stay upright
-K = [ -1.047, -0.320 ]
+Solved the ARE with `Q = diag(1, 0.1)`, `R = 1`:  
+Q matrix prioritized theta since the primary objective of the robot is to stay upright.  
+K = [ -1.047, -0.320 ].
 Closed-loop eigenvalues: -3.16, -299.1
 
 ### Mapping to motor command
@@ -94,7 +94,7 @@ Closed-loop eigenvalues: -3.16, -299.1
 LQR was derived to return a torque value. Therefore the LQR u value was scaled to
 a value which could be sent to the motor driver which accepts values in the range 0-255 for the motor speed. One factor for the scale value, is the "stall value"
 of the dc motors. Below a certain input speed, the motors do not run at all. Therefore, an adequately large scale value was chosen for the controller, to make sure the resulting
-motor inputs exceeded the stall value as the robot tilted small angles. After determing a starting range, the exact value of the scale factor was chosen by trial and error.
+motor inputs exceeded the stall value as the robot tilted small angles. After determining a starting range, the exact value of the scale factor was chosen by trial and error.
 
 ```
 u = SCALE * (1.047 * theta + 0.320 * theta_dot)
@@ -107,6 +107,7 @@ u = SCALE * (1.047 * theta + 0.320 * theta_dot)
 Will add an outer control loop using an ultrasonic sensor to maintain a specific distance away from the wall, while balancing
 
 **Controller comparison.**
+
 Will compare robot balancing performance with the control parameters derived from the LQR control method vs parameters tuned from a PID controller
 
 ---
