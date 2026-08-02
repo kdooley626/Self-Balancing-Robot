@@ -3,7 +3,7 @@
 A two-wheeled inverted pendulum robot that balances using a complementary-filtered
 IMU estimate and a model-based LQR controller.
 
-![Self_Balancing Robot](Assets/Full_assembly_build.jpeg)
+<img src="Assets/Full_assembly_build.jpg" width="500">
 
 <!-- A short GIF of it balancing is the single highest-value thing on this page.
      Record a few seconds on your phone, convert to GIF, drop it in assets/. -->
@@ -117,8 +117,8 @@ Will compare robot balancing performance with the control parameters derived fro
 ```
 ├── Balancing_Control_v1/     # Arduino sketch for LQR controller
 ├── ControlCode/          # Python LQR solution
-├── cad/              # Chassis stl files (3D printed)
-├── assets/           # Photos and video
+├── CAD/              # Chassis stl files (3D printed)
+├── Assets/           # Photos and video
 └── README.md
 ```
 
