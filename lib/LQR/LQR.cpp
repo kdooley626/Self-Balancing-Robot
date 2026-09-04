@@ -3,7 +3,7 @@
 
 static float K1 = 1.047;
 static float K2 = .32;
-static float u_sp = 1000;
+static float u_sp = 200;
 
 
 

@@ -5,6 +5,8 @@ struct Motor {
     int enablePin;
     int in1Pin;
     int in2Pin;
+    int speed_min_pos;
+    int speed_min_neg;
 };
 
 void setPWM(Motor motor);

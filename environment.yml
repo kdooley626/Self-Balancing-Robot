@@ -1,0 +1,11 @@
+name: balancebot
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - scipy
+  - matplotlib
+  - ipykernel
+  - sympy
+  - numpy
+prefix: /opt/anaconda3/envs/balancebot

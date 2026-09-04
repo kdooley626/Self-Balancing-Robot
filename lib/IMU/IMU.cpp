@@ -3,7 +3,7 @@
 
 static Adafruit_MPU6050 mpu;
 static sensors_event_t a, g, temp;
-static float offset_deg = 5.83;
+static float offset_deg = 5.3;
 static float offset = offset_deg*PI/180.0;
 static float gyroDrift = 0;
 

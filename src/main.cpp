@@ -6,8 +6,8 @@
 #include "Motors.h"
 #include "TestConfig.h"
 
-Motor motor1 = {25, 27, 26};
-Motor motor2 = {13, 32, 33};
+Motor motor1 = {25, 27, 26, 155, 150};
+Motor motor2 = {13, 32, 33, 150, 155};
 
 struct motorCommand {
   String MotorState;
@@ -62,10 +62,11 @@ void runFullBalance() {
     runBothMotors(motor1, motor2, cmd);
     float FiltTheta_deg = rad2deg(s_Filt.theta);
     float GyroDrift_deg = rad2deg(s_Filt.gyro_drift_theta);
+    float theta_dot_deg = rad2deg(s_Filt.theta_dot);
     
     t0 = s.time;
     if (timeTrack(print_interval, t0_print)) {
-      Serial.print(">Filt_theta:"); Serial.println(FiltTheta_deg); Serial.print(">GyroDrift:"); Serial.println(GyroDrift_deg); Serial.print(">MotorCommand:"); Serial.println(cmd);
+      Serial.print(">Filt_theta:"); Serial.println(FiltTheta_deg); Serial.print(">GyroDrift:"); Serial.println(GyroDrift_deg); Serial.print(">MotorCommand:"); Serial.println(cmd); Serial.print(">Theta_dot:"); Serial.println(theta_dot_deg);
       t0_print = s.time;
     }
   }

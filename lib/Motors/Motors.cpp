@@ -4,9 +4,10 @@
 // Motor 1 pins
 
 static const int freq = 5000;
-static const int pwmChannel =0;
+
 static const int resolution = 8;
-static const int min_speed = 160;
+
+static const int to_zero = 10; // Motor inputs which should result in motors going to 0
 
 
 
@@ -24,17 +25,34 @@ void setPWM(Motor motor) {
 
 void run1Motor(Motor motor, int speed) {
     int speed_mag = abs(speed);
-    if (speed_mag <= 255) {
-        ledcWrite(motor.enablePin, speed_mag);
+    if (speed_mag <= to_zero) {
+        speed = 0;
+        ledcWrite(motor.enablePin, 0);
     } else {
-        ledcWrite(motor.enablePin, 255);
+        int comp_speed;
+        if (speed <0 ) {
+            comp_speed = speed_mag + motor.speed_min_neg;
+        } else {
+            comp_speed = speed_mag + motor.speed_min_pos;
+        }
+       
+        if (comp_speed <= 255) {
+            ledcWrite(motor.enablePin, comp_speed);
+        } else {
+            ledcWrite(motor.enablePin, 255);
+        }
     }
+
+    
     if (speed > 0) {
         digitalWrite(motor.in1Pin, HIGH);
         digitalWrite(motor.in2Pin, LOW);
-    } else {
+    } else if (speed < 0) {
         digitalWrite(motor.in1Pin, LOW);
         digitalWrite(motor.in2Pin, HIGH);
+    } else {
+        digitalWrite(motor.in1Pin, LOW);
+        digitalWrite(motor.in2Pin, LOW);
     }
 }
 
